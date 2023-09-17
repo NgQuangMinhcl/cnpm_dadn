@@ -1,0 +1,18 @@
+Đồ án đa ngành CNPM: 
++ Đề tài nhà thông minh
++ Các chức năng chính  :
+                    _ Đo độ ẩm
+		    _ Đo nhiệt độ
+		    _ Đo độ sáng
+		    _ Bật tắt quạt, bật tắt đèn
+                    _ Quản lí dữ liệu người dùng
++ Ngôn ngữ lập trình JavaScipt
+   _ UI : Sử dụng framework react-native 
+   _ Hệ cơ sở dữ liệu: Firebase
+   _ Quản lí về IOT : python và adafruit
++ Nhiệm vụ chính:
+  Minh : Front-end
+  Mai Phương và Bích Phương: Back-end và database
+  Lợi  : IOT
+
+   
