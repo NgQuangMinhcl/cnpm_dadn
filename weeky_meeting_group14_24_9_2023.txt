@@ -1,0 +1,9 @@
+Họp tuần hai:
+Nội dung: Các thành viên trong nhóm tìm hiểu công nghệ, phác thảo các chức năng chính
+         Cùng nhau tìm hiểu về 1 số thắc mắc chung
+         Bắt đầu thực hiện về UI cũng như phần cứng
+
+Mục tiêu tuần sau:
+	Minh: Tiếp tục xây dựng app
+	Mai Phương và Bích Phương: tiếp tục xây dựng web
+	Lợi : Tiếp tục hiện thực iot
