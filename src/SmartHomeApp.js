@@ -4,6 +4,7 @@ import React from 'react';
 import Sidebar from './component/Sidebar/Sidebar';
 import Header from './component/Header/Header';
 import Home from './component/Home/Home';
+import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -50,18 +51,13 @@ const SmartHomeApp = () => {
 
   return (
     <div className='home'>
-      <Row>
+      <Row style={{margin:'0'}}>
         <Header />
       </Row>
-      <Row>
-        <Col xs={2}><Sidebar /></Col>
-        <Col><Home /></Col>
-      </Row>
-      
-        
-      
-      
-        
+      <Row style={{margin:'0'}}>
+        <Col xs={2} style={{padding:'0'}}><Sidebar /></Col>
+        <Col style={{padding:'0'}}><Home /></Col>
+      </Row> 
     </div>
   );
 };

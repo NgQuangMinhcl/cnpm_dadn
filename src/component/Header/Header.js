@@ -8,8 +8,8 @@ import 'bootstrap-icons/font/bootstrap-icons.css'
 
 function Header() {
   return (
-    <div style={{backgroundColor:'#6600CC', height:'80px', color:'white'}}>
-      <Row>
+    <div style={{backgroundColor:'#6600CC', height:'80px', color:'white', padding:'0'}}>
+      <Row style={{margin:'0'}}>
         <Col xs={10} >
           <h1 style={{paddingTop:'10px', paddingLeft:'20px'}}>Smart Home</h1>
         </Col>
