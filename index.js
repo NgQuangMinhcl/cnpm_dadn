@@ -1,6 +1,7 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const path = require('path');
+const cors = require('cors');
 
 const db = require('./config/db_connect');
 const user_router = require('./router/user_router');
@@ -14,6 +15,7 @@ db.connectDB();
 
 
 app.use(express.json());
+app.use(cors());
 app.use("/api", user_router.router);
 
 app.get('/', (req, res) => {
