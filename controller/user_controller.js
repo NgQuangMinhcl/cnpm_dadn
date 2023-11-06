@@ -1,5 +1,6 @@
 const { User_Schema } = require("../model/user_model");
 const { Date_Schema } = require("../model/date_model");
+const moment = require("moment-timezone");
 const bcrypt = require("bcryptjs");
 
 const user_register = async (req, res) => {
@@ -26,20 +27,12 @@ const user_login = async (req, res) => {
       if (!isMatch) {
         res.status(400).json({ success: false, error: "Wrong password" });
       } else {
-        const date = new Date();
-        const array = date.toString().split(" ");
-        const this_date =
-          array[0] +
-          " " +
-          array[1] +
-          " " +
-          array[2] +
-          " " +
-          array[3] +
-          " " +
-          array[4];
+        let date = moment.tz(new Date(), "Asia/Ho_Chi_Minh");
+        date = date.format();
+        array_date = date.split("T");
+        date = array_date[0] + " " + array_date[1].split("+")[0];
         const date_log = Date_Schema.create({
-          date: this_date,
+          date: date,
           user_name: req.body.username,
         });
         res.status(200).json({ success: true, message: "Login success" });
