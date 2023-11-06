@@ -20,6 +20,9 @@ import BedtimeIcon from '@mui/icons-material/Bedtime';
 import AlarmIcon from '@mui/icons-material/Alarm';
 import WindPowerIcon from '@mui/icons-material/WindPower';
 import BarChart from '../charts/BarChart'
+import OnOffDevice from "../components/OnOffDevice";
+import GetValueDevice from "../components/GetValueDevice";
+
 
 const AntSwitch = styled(Switch)(({ theme }) => ({
     width: 28,
@@ -75,190 +78,54 @@ export default function Home(){
                     <Grid container  spacing={5}>
                         <Grid item xs={9}>
                             <Stack spacing={5}  direction="row" justifyContent="center" > 
-                                <Card sx={{ minWidth: 47 + "%", height: 140 }}  className="card">
-                                    <CardContent>
-                                        <Stack direction="row">
-                                            <Grid container >
-                                                <Grid item xs={1} >
-                                                    <DeviceThermostatIcon sx={{ fontSize: 40, color: blue[50]}}/>
-                                                </Grid>
-                                                <Grid item xs={7}>
-                                                    <Typography gutterBottom variant="h5" component="div" style={{color: "white", fontSize: "30px", marginLeft:"15px"}}>
-                                                        Temperature
-                                                    </Typography>
-                                                </Grid>
-                                                <Grid item xs={4} style={{marginTop:"-10px"}}>
-                                                    <span style={{fontSize:"50px", color:"white", marginLeft:"30px"}}>27&#8451;</span>
-                                                </Grid>
-                                            </Grid>
-                                        </Stack>
-                                        <Slider
-                                            aria-label="Custom marks"
-                                            defaultValue={20}
-                                            step={1}
-                                            valueLabelDisplay="auto"
-                                            style={{color:"white"}}
-                                        />
-                                    </CardContent>   
-                                </Card>
-                                <Card sx={{ minWidth: 47 + "%", height: 140 }} className="card">
-                                    <CardContent>
-                                        <Stack direction="row">
-                                            <Grid container >
-                                                <Grid item xs={1}>
-                                                    <WaterDropIcon sx={{ fontSize: 40, color: blue[50]}} />
-                                                </Grid>
-                                                <Grid item xs={7}>
-                                                    <Typography gutterBottom variant="h5" component="div" style={{color: "white", fontSize: "30px", marginLeft:"15px" }}>
-                                                        Humidity
-                                                    </Typography>
-                                                </Grid>
-                                                <Grid item xs={4} style={{marginTop:"-10px"}}>
-                                                    <span style={{fontSize:"50px", color:"white", marginLeft:"30px"}}>71%</span>
-                                                </Grid>
-                                            </Grid>
-                                        </Stack>
-                                        <Slider
-                                            aria-label="Custom marks"
-                                            defaultValue={20}
-                                            step={1}
-                                            valueLabelDisplay="auto"
-                                            style={{color:"white"}}
-                                        />
-                                    </CardContent>   
-                                </Card>
+                                <GetValueDevice 
+                                    feedId="nhiet-do" 
+                                    deviceName="Temperature"
+                                    icon={<DeviceThermostatIcon sx={{ fontSize: 40, color: blue[50] }} />}
+                                />
+                                <GetValueDevice
+                                    feedId="do-am" 
+                                    deviceName="Humidity" 
+                                    icon={<WaterDropIcon sx={{ fontSize: 40, color: blue[50] }} />}
+                                />
                             </Stack>  
                         </Grid>
                         <Grid item xs={3}>
                             <Stack spacing={2} alignItems="center">
-                                <Card sx={{ minWidth: 75 + "%", height: 140 }} className="card">
-                                    <CardContent>
-                                        <Grid container >
-                                            <Grid item xs={2}>
-                                                <AlarmIcon sx={{ fontSize: 40, color: blue[50]}} />
-                                            </Grid>
-                                            <Grid item xs={10}>
-                                                <Typography gutterBottom variant="h5" component="div" style={{color: "white", fontSize: "30px", marginLeft:"15px"}}>
-                                                    Wake Up
-                                                </Typography>
-                                            </Grid>
-                                        </Grid>
-                                        <div style={{marginLeft:"50px", marginTop:"10px"}}>
-                                            <Stack direction="row" spacing={1} alignItems="center">
-                                                <Typography style={{color:"white"}}>Off</Typography>
-                                                <AntSwitch defaultChecked inputProps={{ 'aria-label': 'ant design' }} />
-                                                <Typography style={{color:"white"}}>On</Typography>
-                                            </Stack>  
-                                        </div>  
-                                    </CardContent>   
-                                </Card>
-                            </Stack>      
+                                <OnOffDevice 
+                                    feedId="bao-thuc" 
+                                    deviceName="Wake Up"
+                                    icon={<AlarmIcon sx={{ fontSize: 40, color: blue[50] }} />}
+                                /> 
+                        </Stack>      
                         </Grid>
                         <Grid item xs={9}>
-                            <Stack spacing={5}  direction="row" justifyContent="center">
-                                <Card sx={{ minWidth: 30 + "%", height: 140 }} className="card">
-                                    <CardContent>
-                                        <Stack direction="row">
-                                            <Grid container >
-                                                <Grid item xs={2}>
-                                                    <LightModeIcon sx={{ fontSize: 40, color: blue[50]}} />
-                                                </Grid>
-                                                <Grid item xs={6}>
-                                                    <Typography gutterBottom variant="h5" component="div" style={{color: "white", fontSize: "30px", marginLeft:"15px"}}>
-                                                        Light
-                                                    </Typography>
-                                                </Grid>
-                                                <Grid item xs={4} style={{marginTop:"10px"}}>
-                                                    <Stack direction="row" spacing={1} alignItems="center">
-                                                        <Typography style={{color:"white"}}>Off</Typography>
-                                                        <AntSwitch defaultChecked inputProps={{ 'aria-label': 'ant design' }} />
-                                                        <Typography style={{color:"white"}}>On</Typography>
-                                                    </Stack>
-                                                </Grid>
-                                            </Grid>
-                                        </Stack>
-                                        <Slider
-                                            aria-label="Custom marks"
-                                            defaultValue={20}
-                                            step={1}
-                                            valueLabelDisplay="auto"
-                                            style={{color:"white", marginTop:"10px"}}
-                                        />
-                                    </CardContent>   
-                                </Card>
-                                <Card sx={{ minWidth: 30 + "%", height: 140 }} className="card">
-                                    <CardContent>
-                                        <Stack direction="row">
-                                            <Grid container >
-                                                <Grid item xs={2}>
-                                                    <WindPowerIcon sx={{ fontSize: 40, color: blue[50]}} />
-                                                </Grid>
-                                                <Grid item xs={6}>
-                                                    <Typography gutterBottom variant="h5" component="div" style={{color: "white", fontSize: "30px", marginLeft:"15px"}}>
-                                                        Fan
-                                                    </Typography>
-                                                </Grid>
-                                                <Grid item xs={4} style={{marginTop:"10px"}}>
-                                                    <Stack direction="row" spacing={1} alignItems="center">
-                                                        <Typography style={{color:"white"}}>Off</Typography>
-                                                        <AntSwitch defaultChecked inputProps={{ 'aria-label': 'ant design' }} />
-                                                        <Typography style={{color:"white"}}>On</Typography>
-                                                    </Stack>
-                                                </Grid>
-                                            </Grid>
-                                        </Stack>
-                                    </CardContent>   
-                                </Card>
-                                <Card sx={{ minWidth: 30 + "%", height: 140 }} className="card">
-                                    <CardContent>
-                                        <Stack direction="row">
-                                            <Grid container >
-                                                <Grid item xs={2}>
-                                                    <LightModeIcon sx={{ fontSize: 40, color: blue[50]}} />
-                                                </Grid>
-                                                <Grid item xs={6}>
-                                                    <Typography gutterBottom variant="h5" component="div" style={{color: "white", fontSize: "30px", marginLeft:"15px"}}>
-                                                        Other
-                                                    </Typography>
-                                                </Grid>
-                                                <Grid item xs={4} style={{marginTop:"10px"}}>
-                                                    <Stack direction="row" spacing={1} alignItems="center">
-                                                        <Typography style={{color:"white"}}>Off</Typography>
-                                                        <AntSwitch defaultChecked inputProps={{ 'aria-label': 'ant design' }} />
-                                                        <Typography style={{color:"white"}}>On</Typography>
-                                                    </Stack>
-                                                </Grid>
-                                            </Grid>
-                                        </Stack>
-                                    </CardContent>   
-                                </Card>
+                            <Stack spacing={5}  direction="row" justifyContent="center">    
+                                <OnOffDevice 
+                                    feedId="den-phong-khach" 
+                                    deviceName="Light 1"
+                                    icon={<LightModeIcon sx={{ fontSize: 40, color: blue[50] }} />}
+                                />
+                                <OnOffDevice 
+                                    feedId="quat-phong-khach" 
+                                    deviceName="Fan 1" 
+                                    icon={<WindPowerIcon sx={{ fontSize: 40, color: blue[50] }} />}
+                                /> 
+                                <OnOffDevice 
+                                    feedId="den-phong-ngu" 
+                                    deviceName="Light 2" 
+                                    icon={<LightModeIcon sx={{ fontSize: 40, color: blue[50] }} />}
+                                />
 
                             </Stack>  
                         </Grid>
                         <Grid item xs={3}>
                             <Stack spacing={2} alignItems="center">
-                                <Card sx={{ maxWidth: 75 + "%", height: 140 }} className="card">
-                                    <CardContent>
-                                        <Grid container >
-                                            <Grid item xs={2}>
-                                                <BedtimeIcon sx={{ fontSize: 40, color: blue[50]}} />
-                                            </Grid>
-                                            <Grid item xs={10}>
-                                                <Typography gutterBottom variant="h5" component="div" style={{color: "white", fontSize: "30px", marginLeft:"15px"}}>
-                                                    Good Night
-                                                </Typography>
-                                            </Grid>
-                                        </Grid>
-                                        <div style={{marginLeft:"50px", marginTop:"10px"}}>
-                                            <Stack direction="row" spacing={1} alignItems="center">
-                                                <Typography style={{color:"white"}}>Off</Typography>
-                                                <AntSwitch defaultChecked inputProps={{ 'aria-label': 'ant design' }} />
-                                                <Typography style={{color:"white"}}>On</Typography>
-                                            </Stack>  
-                                        </div>
-                                           
-                                    </CardContent>   
-                                </Card>
+                                <OnOffDevice 
+                                    feedId="good-night" 
+                                    deviceName="Good Night"
+                                    icon={<BedtimeIcon sx={{ fontSize: 40, color: blue[50] }} />}
+                                />
                             </Stack>      
                         </Grid>   
                     </Grid>

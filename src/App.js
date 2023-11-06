@@ -5,7 +5,7 @@ import Home from './pages/Home';
 import Settings from './pages/Settings';
 import Analytics from './pages/Analytics';
 import Devices from './pages/Devices';
-
+import database from './firebase-config';
 export default function App(){
   return (
     <>
