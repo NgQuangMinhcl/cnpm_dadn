@@ -9,6 +9,8 @@ import Slider from '@mui/material/Slider';
 import axios from 'axios';
 import { getDatabase, ref, onChildAdded } from "firebase/database";
 import { useDebounce } from "../debouce";
+import CircularSlider from '@fseehawer/react-circular-slider';
+ 
 
 const GetValueDevice = (props) => {
     const [valueDevice, setValueDevice] = useState(27);
@@ -58,43 +60,21 @@ const GetValueDevice = (props) => {
     }, [debouncedValue])
 
     return (
-       
-        <Card sx={{ minWidth: 47 + "%", height: 140 }} className="card">
-            <CardContent>
-                <Stack direction="row">
-                    <Grid container >
-                        <Grid item xs={1} >
-                            {props.icon}
-                        </Grid>
-                        <Grid item xs={7}>
-                            <Typography gutterBottom variant="h5" component="div" style={{ color: "white", fontSize: "30px", marginLeft: "15px" }}>
-                                {props.deviceName}
-                            </Typography>
-                        </Grid>
-                        <Grid item xs={4} style={{ marginTop: "-10px" }}>
-                            {props.deviceName === "Temperature" ? (
-                                <span style={{ fontSize: "50px", color: "white", marginLeft: "30px" }}>{valueDevice}&#8451;</span>
-                            ) : (
-                                props.deviceName === "Humidity" ? (
-                                    <span style={{ fontSize: "50px", color: "white", marginLeft: "30px" }}>{valueDevice} %</span>
-                                ) : null
-                            )}
-                        </Grid>
-                    </Grid>
-                </Stack>
-                <Slider
-                    aria-label="Custom marks"
-                    value={valueDevice}
-                    step={1}
-                    valueLabelDisplay="auto"
-                    onChange={(e, newValue) => handleChange(newValue)}
-                    style={{ color: "white" }}
-
-                    className="custom-slider"
-                />
-
-            </CardContent>
-        </Card>
+        <CircularSlider
+                label={props.deviceName}
+                labelColor="#005a58"
+                knobColor="#005a58"
+                progressColorFrom="#00bfbd"
+                progressColorTo="#009c9a"
+                progressSize={24}
+                appendToValue={props.deviceUnit}
+                trackColor="#eeeeee"
+                trackSize={24}
+                max={100}
+                min={0}
+                dataIndex={valueDevice}
+                onChange={ value => { handleChange(value); } }
+            />
     )
 }
 export default GetValueDevice;

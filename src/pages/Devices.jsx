@@ -39,11 +39,19 @@ const Devices = () => {
                                     feedId="nhiet-do" 
                                     deviceName="Temperature"
                                     icon={<DeviceThermostatIcon sx={{ fontSize: 40, color: blue[50] }} />}
+                                    deviceUnit="°C"
                                 />
                                 <GetValueDevice
                                     feedId="do-am" 
                                     deviceName="Humidity" 
                                     icon={<WaterDropIcon sx={{ fontSize: 40, color: blue[50] }} />}
+                                    deviceUnit=" %"
+                                />
+                                <GetValueDevice 
+                                    feedId="nhiet-do-phong-ngu" 
+                                    deviceName="Temperature"
+                                    icon={<DeviceThermostatIcon sx={{ fontSize: 40, color: blue[50] }} />}
+                                    deviceUnit="°C"
                                 />
                             </Stack>
                         </Grid>

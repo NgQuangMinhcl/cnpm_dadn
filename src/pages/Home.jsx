@@ -16,6 +16,7 @@ import DeviceThermostatIcon from '@mui/icons-material/DeviceThermostat';
 import { blue } from '@mui/material/colors';
 import WaterDropIcon from '@mui/icons-material/WaterDrop';
 import LightModeIcon from '@mui/icons-material/LightMode';
+import EmojiObjectsIcon from '@mui/icons-material/EmojiObjects';
 import BedtimeIcon from '@mui/icons-material/Bedtime';
 import AlarmIcon from '@mui/icons-material/Alarm';
 import WindPowerIcon from '@mui/icons-material/WindPower';
@@ -76,58 +77,82 @@ export default function Home(){
                 
                 <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
                     <Grid container  spacing={5}>
-                        <Grid item xs={9}>
-                            <Stack spacing={5}  direction="row" justifyContent="center" > 
+                        <Grid item xs={9} spacing={5}>
+                            <Stack spacing={5}  direction="row" alignItems="center" marginLeft={7}> 
                                 <GetValueDevice 
                                     feedId="nhiet-do" 
-                                    deviceName="Temperature"
-                                    icon={<DeviceThermostatIcon sx={{ fontSize: 40, color: blue[50] }} />}
+                                    deviceName="Temperature Living Room"
+                                    deviceUnit="°C"
+                                    
+                                />
+                                <GetValueDevice
+                                    feedId="nhiet-do-phong-ngu" 
+                                    deviceName="Temperature Bed Room"
+                                    deviceUnit="°C"
                                 />
                                 <GetValueDevice
                                     feedId="do-am" 
-                                    deviceName="Humidity" 
-                                    icon={<WaterDropIcon sx={{ fontSize: 40, color: blue[50] }} />}
+                                    deviceName="Humidity Living Room" 
+                                    deviceUnit="%"
                                 />
-                            </Stack>  
-                        </Grid>
-                        <Grid item xs={3}>
-                            <Stack spacing={2} alignItems="center">
-                                <OnOffDevice 
-                                    feedId="bao-thuc" 
-                                    deviceName="Wake Up"
-                                    icon={<AlarmIcon sx={{ fontSize: 40, color: blue[50] }} />}
-                                /> 
-                        </Stack>      
-                        </Grid>
-                        <Grid item xs={9}>
-                            <Stack spacing={5}  direction="row" justifyContent="center">    
+                                
+                                
+                            </Stack> 
+                            <Stack spacing={5}  direction="row" justifyContent="center" marginTop={5}>    
                                 <OnOffDevice 
                                     feedId="den-phong-khach" 
-                                    deviceName="Light 1"
-                                    icon={<LightModeIcon sx={{ fontSize: 40, color: blue[50] }} />}
+                                    deviceName="Light Living Room"
+                                    icon={<EmojiObjectsIcon sx={{ fontSize: 80, color: "white" }} />}
+                                    backgroundColor="#ffa000"
                                 />
                                 <OnOffDevice 
                                     feedId="quat-phong-khach" 
-                                    deviceName="Fan 1" 
-                                    icon={<WindPowerIcon sx={{ fontSize: 40, color: blue[50] }} />}
+                                    deviceName="Fan Living Room" 
+                                    icon={<WindPowerIcon sx={{ fontSize: 70, color: "white" }} />}
+                                    backgroundColor="#64dd17"
                                 /> 
                                 <OnOffDevice 
                                     feedId="den-phong-ngu" 
-                                    deviceName="Light 2" 
-                                    icon={<LightModeIcon sx={{ fontSize: 40, color: blue[50] }} />}
+                                    deviceName="Light Bed Room" 
+                                    icon={<LightModeIcon sx={{ fontSize: 70, color: "white" }} />}
+                                    backgroundColor="#b39ddb"
                                 />
 
-                            </Stack>  
+                            </Stack>   
                         </Grid>
-                        <Grid item xs={3}>
-                            <Stack spacing={2} alignItems="center">
+                        <Grid item xs={3} style={{
+                            alignItems: "center"
+                        }}>
+                            <div style={{
+                                width:"80%",
+                                marginLeft: "10%"
+                            }}>
+                            <Stack spacing={2} alignItems="center"style={{ marginTop: 15}}>
+                                <OnOffDevice 
+                                    feedId="bao-thuc" 
+                                    deviceName="Wake Up"
+                                    icon={<AlarmIcon sx={{ fontSize: 70, color: "white" }} />}
+                                    backgroundColor="#ffa000"
+                                    fontSize={30}
+                                    height={200}
+                                    marginTop={50}
+                                /> 
+                            </Stack>  
+                            <Stack spacing={2} alignItems="center" style={{ marginTop: 50}}>
                                 <OnOffDevice 
                                     feedId="good-night" 
                                     deviceName="Good Night"
-                                    icon={<BedtimeIcon sx={{ fontSize: 40, color: blue[50] }} />}
+                                    icon={<BedtimeIcon sx={{ fontSize: 70, color: "white" }} />}
+                                    backgroundColor="#64dd17"
+                                    fontSize={30}
+                                    height={200}
+                                    marginTop={50}
                                 />
-                            </Stack>      
-                        </Grid>   
+                            </Stack>       
+                            </div>
+                               
+                        </Grid>
+                        
                     </Grid>
                     <Box height={20} />
                     <Grid container spacing={2}>
