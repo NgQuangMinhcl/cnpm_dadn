@@ -10,7 +10,6 @@ import axios from 'axios';
 import { getDatabase, ref, onChildAdded } from "firebase/database";
 import { useDebounce } from "../debouce";
 
-
 const GetValueDevice = (props) => {
     const [valueDevice, setValueDevice] = useState(27);
     const debouncedValue = useDebounce(valueDevice, 500);
@@ -59,6 +58,7 @@ const GetValueDevice = (props) => {
     }, [debouncedValue])
 
     return (
+       
         <Card sx={{ minWidth: 47 + "%", height: 140 }} className="card">
             <CardContent>
                 <Stack direction="row">
@@ -89,6 +89,8 @@ const GetValueDevice = (props) => {
                     valueLabelDisplay="auto"
                     onChange={(e, newValue) => handleChange(newValue)}
                     style={{ color: "white" }}
+
+                    className="custom-slider"
                 />
 
             </CardContent>

@@ -84,7 +84,7 @@ const OnOffDevice = (props) => {
 
     }
     return (
-        <Card sx={{ minWidth: 30 + "%", height: 200 }} className="card">
+        <Card sx={{ minWidth: 30 + "%", height: 140 }} className="card">
             <CardContent>
                 <Stack direction="row">
                     <Grid container >
