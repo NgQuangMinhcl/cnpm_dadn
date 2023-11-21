@@ -9,6 +9,7 @@ import { styled } from '@mui/material/styles';
 import Switch from '@mui/material/Switch';
 import axios from 'axios';
 import { getDatabase, ref, onChildAdded } from "firebase/database";
+import { API_URL } from "../constants";
 
 
 const AntSwitch = styled(Switch)(({ theme }) => ({
@@ -59,7 +60,7 @@ const OnOffDevice = (props) => {
     const [deviceState, setDeviceState] = useState(false);
 
     useEffect(() => {
-        axios.get(`http://127.0.0.1:5001/${props.feedId}`)
+        axios.get(`${API_URL}/${props.feedId}`)
             .then(result => {
                 setDeviceState(result.data === "ON" ? true : false)
             })
@@ -80,7 +81,7 @@ const OnOffDevice = (props) => {
     const changeLightStatus = async (feedId, newStatus) => {
         const newData = newStatus ? "ON" : "OFF"
         setDeviceState(newStatus)
-        await axios.post(`http://127.0.0.1:5001/cambien/${feedId}/${newData}`)
+        await axios.post(`${API_URL}/cambien/${feedId}/${newData}`)
 
     }
     return (

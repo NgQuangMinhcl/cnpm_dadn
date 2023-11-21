@@ -10,6 +10,7 @@ import axios from 'axios';
 import { getDatabase, ref, onChildAdded } from "firebase/database";
 import { useDebounce } from "../debouce";
 import CircularSlider from '@fseehawer/react-circular-slider';
+import { API_URL } from "../constants";
  
 
 const GetValueDevice = (props) => {
@@ -24,7 +25,7 @@ const GetValueDevice = (props) => {
     };
 
     useEffect(() => {
-        axios.get(`http://127.0.0.1:5001/${props.feedId}`)
+        axios.get(`${API_URL}/${props.feedId}`)
             .then(result => {
                 setValueDevice(Number(result.data))
             })
@@ -48,7 +49,7 @@ const GetValueDevice = (props) => {
         // Do fetch here...
         // Triggers when "debouncedValue" changes
         if (shouldUpdateDatabase) {
-            axios.post(`http://127.0.0.1:5001/cambien/${props.feedId}/${valueDevice}`)
+            axios.post(`${API_URL}/cambien/${props.feedId}/${valueDevice}`)
                 .then(() => {
                     console.log(props.feedId, "updated")
                 })

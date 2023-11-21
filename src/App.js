@@ -15,6 +15,7 @@ export default function App(){
           {/* <Route path="/devices" exact element={<Devices />}></Route> */}
           <Route path="/analytics" exact element={<Analytics />}></Route>
           <Route path="/settings" exact element={<Settings />}></Route>
+          
         </Routes>
       </BrowserRouter>
     </>
