@@ -78,4 +78,4 @@ if __name__ == '__main__':
     for feed_key in FEED_KEYS:
         client.subscribe(feed_key)
     client.loop_background()
-    app.run(debug=True, port=5001)
+    app.run(host="127.0.0.1", port=8080, debug=True)
