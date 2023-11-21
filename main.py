@@ -3,6 +3,10 @@ from Adafruit_IO import Client, Data, MQTTClient
 from flask_cors import CORS, cross_origin
 from firebase_admin import credentials, initialize_app, db
 import time
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
 
 cred = credentials.Certificate("smart-home.json")
 firebase_app = initialize_app(cred, {
@@ -15,7 +19,8 @@ app = Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
-ADAFRUIT_IO_KEY = 'aio_gmBS985KntkmPiBulIEHZiEhCNyB'
+ADAFRUIT_IO_KEY = os.environ.get('ADAFRUIT_IO_KEY')
+print(ADAFRUIT_IO_KEY)
 ADAFRUIT_IO_USERNAME = 'nguyenphuong09'
 FEED_KEYS = ["den-phong-khach", "quat-phong-khach", "bao-thuc", "good-night", "nhiet-do", "do-am", "den-phong-ngu", "nhiet-do-phong-ngu"]
 
