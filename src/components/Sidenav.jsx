@@ -184,7 +184,28 @@ export default function Sidenav() {
                 </ListItemIcon>
                 <ListItemText primary="Settings" sx={{ opacity: open ? 1 : 0 }} />
                 </ListItemButton>
-            </StyledListItem>  
+            </StyledListItem>
+            <StyledListItem disablePadding sx={{ display: 'block' }} onClick={()=>(navigate("/login"))}> 
+                <ListItemButton
+                sx={{
+                    minHeight: 48,
+                    justifyContent: open ? 'initial' : 'center',
+                    px: 2.5,
+                }}
+                >
+                <ListItemIcon
+                    sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : 'auto',
+                    justifyContent: 'center',
+                    color:'white',
+                    }}
+                >
+                    <SettingsIcon/>
+                </ListItemIcon>
+                <ListItemText primary="Settings" sx={{ opacity: open ? 1 : 0 }} />
+                </ListItemButton>
+            </StyledListItem>   
         </List>
       </Drawer>
       
