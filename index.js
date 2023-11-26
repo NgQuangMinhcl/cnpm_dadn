@@ -93,6 +93,30 @@ const openLed = () => {
     console.log(error);
   }
 };
+
+const closeLed = () => {
+  try {
+    const feedUrl = "https://io.adafruit.com/api/v2/chuloi/feeds/led/data";
+    const newData = {
+      value: "4",
+    };
+    const headers = {
+      "X-AIO-Key": "aio_wiwj60jXqilnByY97N5gowhKZ93L",
+    };
+
+    axios
+      .post(feedUrl, newData, { headers })
+      .then(() => {
+        console.log("Light is off");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const opentest = () => {
   try {
     const feedUrl =
@@ -108,28 +132,6 @@ const opentest = () => {
       .post(feedUrl, newData, { headers })
       .then(() => {
         console.log("Light is on");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  } catch (error) {
-    console.log(error);
-  }
-};
-const closeLed = () => {
-  try {
-    const feedUrl = "https://io.adafruit.com/api/v2/chuloi/feeds/led/data";
-    const newData = {
-      value: "4",
-    };
-    const headers = {
-      "X-AIO-Key": "aio_wiwj60jXqilnByY97N5gowhKZ93L",
-    };
-
-    axios
-      .post(feedUrl, newData, { headers })
-      .then(() => {
-        console.log("Light is off");
       })
       .catch((error) => {
         console.log(error);
@@ -199,9 +201,8 @@ let task1 = cron.schedule(
 let task2 = cron.schedule(
   time,
   () => {
-    // openFan();
-    // openLed();
-    opentest();
+    openFan();
+    openLed();
   },
   {
     scheduled: true,
