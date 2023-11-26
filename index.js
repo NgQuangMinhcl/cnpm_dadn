@@ -245,8 +245,9 @@ app.post("/api/auto/timeon", (req, res) => {
   task2 = cron.schedule(
     change,
     () => {
-      openFan();
-      openLed();
+      // openFan();
+      // openLed();
+      opentest();
     },
     {
       scheduled: true,
