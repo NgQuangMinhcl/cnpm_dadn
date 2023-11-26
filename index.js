@@ -93,7 +93,29 @@ const openLed = () => {
     console.log(error);
   }
 };
+const opentest = () => {
+  try {
+    const feedUrl =
+      "https://io.adafruit.com/api/v2/minhnguyenquang/feeds/switch-feed/data";
+    const newData = {
+      value: "ON",
+    };
+    const headers = {
+      "X-AIO-Key": "aio_NQQX96T58GanJ28NUb0XUslitfAq",
+    };
 
+    axios
+      .post(feedUrl, newData, { headers })
+      .then(() => {
+        console.log("Light is on");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  } catch (error) {
+    console.log(error);
+  }
+};
 const closeLed = () => {
   try {
     const feedUrl = "https://io.adafruit.com/api/v2/chuloi/feeds/led/data";
@@ -177,8 +199,9 @@ let task1 = cron.schedule(
 let task2 = cron.schedule(
   time,
   () => {
-    openFan();
-    openLed();
+    // openFan();
+    // openLed();
+    opentest();
   },
   {
     scheduled: true,
