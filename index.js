@@ -32,7 +32,7 @@ const openFan = () => {
       value: "1",
     };
     const headers = {
-      "X-AIO-Key": "aio_wiwj60jXqilnByY97N5gowhKZ93L",
+      "X-AIO-Key": "aio_XiNP40jX23AnVJd0JM6RecljfN2i",
     };
 
     axios
@@ -55,7 +55,7 @@ const closeFan = () => {
       value: "2",
     };
     const headers = {
-      "X-AIO-Key": "aio_wiwj60jXqilnByY97N5gowhKZ93L",
+      "X-AIO-Key": "aio_XiNP40jX23AnVJd0JM6RecljfN2i",
     };
 
     axios
@@ -78,7 +78,7 @@ const openLed = () => {
       value: "3",
     };
     const headers = {
-      "X-AIO-Key": "aio_wiwj60jXqilnByY97N5gowhKZ93L",
+      "X-AIO-Key": "aio_XiNP40jX23AnVJd0JM6RecljfN2i",
     };
 
     axios
@@ -101,37 +101,13 @@ const closeLed = () => {
       value: "4",
     };
     const headers = {
-      "X-AIO-Key": "aio_wiwj60jXqilnByY97N5gowhKZ93L",
+      "X-AIO-Key": "aio_XiNP40jX23AnVJd0JM6RecljfN2i",
     };
 
     axios
       .post(feedUrl, newData, { headers })
       .then(() => {
         console.log("Light is off");
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-const opentest = () => {
-  try {
-    const feedUrl =
-      "https://io.adafruit.com/api/v2/minhnguyenquang/feeds/switch-feed/data";
-    const newData = {
-      value: "ON",
-    };
-    const headers = {
-      "X-AIO-Key": "aio_NQQX96T58GanJ28NUb0XUslitfAq",
-    };
-
-    axios
-      .post(feedUrl, newData, { headers })
-      .then(() => {
-        console.log("Light is on");
       })
       .catch((error) => {
         console.log(error);
@@ -246,9 +222,8 @@ app.post("/api/auto/timeon", (req, res) => {
   task2 = cron.schedule(
     change,
     () => {
-      // openFan();
-      // openLed();
-      opentest();
+      openFan();
+      openLed();
     },
     {
       scheduled: true,
@@ -261,4 +236,4 @@ app.post("/api/auto/timeon", (req, res) => {
 
   res.status(200).json({ success: true });
 });
-app.listen(3000, () => console.log("Server started"));
+app.listen(3000, "0.0.0.0", () => console.log("Server started"));
