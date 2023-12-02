@@ -8,6 +8,17 @@
       "expo-router"
     ],
     "name": "dacnpm",
-    "slug": "dacnpm"
+    "slug": "dacnpm",
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "aaa37c56-8f49-4063-bcef-a868db07075d"
+      }
+    },
+    "android": {
+      "package": "da.cnpm"
+    }
   }
 }
