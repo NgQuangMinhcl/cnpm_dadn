@@ -21,8 +21,8 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 
 ADAFRUIT_IO_KEY = os.environ.get('ADAFRUIT_IO_KEY')
 print(ADAFRUIT_IO_KEY)
-ADAFRUIT_IO_USERNAME = 'nguyenphuong09'
-FEED_KEYS = ["den-phong-khach", "quat-phong-khach", "bao-thuc", "good-night", "nhiet-do", "do-am", "den-phong-ngu", "nhiet-do-phong-ngu"]
+ADAFRUIT_IO_USERNAME = 'chuloi'
+FEED_KEYS = ["led", "fan", "cambien1", "cambien2", "door", "cambien3"]
 
 aio = Client(ADAFRUIT_IO_USERNAME, ADAFRUIT_IO_KEY)
 
@@ -30,6 +30,7 @@ aio = Client(ADAFRUIT_IO_USERNAME, ADAFRUIT_IO_KEY)
 @app.route('/<feed_key>')
 @cross_origin()
 def getFeed(feed_key):
+    print(feed_key)
     feed = aio.receive(feed_key)
     feed_values = feed.value
     return jsonify(feed_values)
@@ -37,6 +38,7 @@ def getFeed(feed_key):
 @app.route('/cambien/<feed_key>/<new_status>', methods=['POST'])
 @cross_origin()
 def toggle_light(feed_key, new_status):
+    print(feed_key, new_status)
     aio.send_data(feed_key, new_status)
     save_to_database(feed_key, new_status)
     return jsonify(200)
@@ -59,6 +61,7 @@ def message (client_id, feed_id , payload ):
 
 def save_to_database(feed_key, value):
         # Store the data in the Firebase Realtime Database
+    print(feed_key, value)
     timestamp = int(time.time())  # Get current timestamp
 
     # Create a reference to the node based on the feed ID
