@@ -5,11 +5,11 @@ import { getDatabase, ref, onValue } from "firebase/database";
 
 
 
-export const options = {
+export const options = (nameChart, targetDate) => ({
   chart: {
-    title: "Temperature in 9 Oct 2023",
+    title: `${nameChart} in ${targetDate}`,
   },
-};
+});
 
 
 
@@ -68,19 +68,20 @@ const HistoryChart = (props) => {
       setData(hourlyAveragesArray)
     })
 
-
+    console.log("called in useEffect()", )
 
   }, [props.targetDate, props.feedId, props.nameChart]);
 
+  const formattedDate = props.targetDate.toDate().toLocaleDateString('en-GB');
+
   return (
-    console.log(tableData),
     tableData.length > 1 ?(
     <Chart
       chartType="Bar"
       width="100%"
       height="400px"
       data={tableData}
-      options={options}
+      options={options(props.nameChart, formattedDate)}
       // title={props.nameChart}
     />
     ):(<p>Không có dữ liệu</p>)

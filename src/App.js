@@ -1,24 +1,45 @@
-import React from 'react';
-import Sidenav from './components/Sidenav';
-import {Routes, Route, BrowserRouter} from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import {Routes, Route, BrowserRouter, Navigate} from 'react-router-dom';
 import Home from './pages/Home';
-import Settings from './pages/Settings';
 import SignInSide from './pages/Login';
 import SignUp from './pages/SignUp';
 import Analytics from './pages/Analytics';
-import Devices from './pages/Devices';
+// import Profile from './pages/Profile';
+import HistoryLogin from './pages/HistoryLogin';
 import database from './firebase-config';
+import Setting from './pages/Setting';
+
+
+
+
 export default function App(){
-  return (
+
+
+  const ProtectedRoute = ({ children }) => {
+    const isAuth = localStorage.getItem("auth_status");
+    console.log("isAuth", isAuth)
+    if (isAuth &&  JSON.parse(isAuth) === true) {
+      console.log("isAuth", "render children")
+      return children;
+    }
+    else {
+      console.log('isauth', "navigate to login")
+      // user is not authenticated
+      return <Navigate to="/login" />;
+    }
+  };
+
+    return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" exact element={<Home />}></Route>
-          {/* <Route path="/devices" exact element={<Devices />}></Route> */}
-          <Route path="/analytics" exact element={<Analytics />}></Route>
-          <Route path="/settings" exact element={<Settings />}></Route>
-          <Route path="/login" exact element={<SignInSide />}></Route>
-          <Route path="/signup" exact element={<SignUp />}></Route>
+          <Route path="/home" exact element={<ProtectedRoute><Home /></ProtectedRoute>}/>
+          <Route path="/analytics" exact element={<ProtectedRoute><Analytics /></ProtectedRoute>}/>
+          {/* <Route path="/analytics" exact element={<Analytics />} /> */}
+          <Route path="/login" exact element={<SignInSide />}/>
+          <Route path="/signup" exact element={<SignUp />}/>
+          <Route path="/historyLogin" exact element={<ProtectedRoute><HistoryLogin /></ProtectedRoute>} />
+          <Route path="/setting" exact element={<ProtectedRoute><Setting /></ProtectedRoute>} />
         </Routes>
       </BrowserRouter>
     </>

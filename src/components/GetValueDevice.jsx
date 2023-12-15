@@ -4,7 +4,6 @@ import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Stack from '@mui/material/Stack';
-import "../Dash.css";
 import Slider from '@mui/material/Slider';
 import axios from 'axios';
 import { getDatabase, ref, onChildAdded } from "firebase/database";
@@ -63,10 +62,10 @@ const GetValueDevice = (props) => {
     return (
         <CircularSlider
                 label={props.deviceName}
-                labelColor="#005a58"
-                knobColor="#005a58"
-                progressColorFrom="#00bfbd"
-                progressColorTo="#009c9a"
+                labelColor="#dd2c00"
+                knobColor="#dd2c00"
+                progressColorFrom="#e65100"
+                progressColorTo="#e65100"
                 progressSize={24}
                 appendToValue={props.deviceUnit}
                 trackColor="#eeeeee"

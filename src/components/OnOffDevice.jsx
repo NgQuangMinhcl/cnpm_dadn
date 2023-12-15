@@ -4,7 +4,6 @@ import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Stack from '@mui/material/Stack';
-import "../Dash.css";
 import { styled } from '@mui/material/styles';
 import Switch from '@mui/material/Switch';
 import axios from 'axios';
@@ -62,7 +61,7 @@ const OnOffDevice = (props) => {
     useEffect(() => {
         axios.get(`${API_URL}/${props.feedId}`)
             .then(result => {
-                setDeviceState(result.data === "ON" ? true : false)
+                setDeviceState(result.data === props.onValue ? true : false)
             })
     }, [])
 
@@ -74,12 +73,12 @@ const OnOffDevice = (props) => {
         onChildAdded(databaseRef, (snapshot) => {
             const newValue = snapshot.val()
             console.log("new value", newValue)
-            setDeviceState(newValue === "ON" ? true : false)
+            setDeviceState(newValue === props.onValue ? true : false)
         })
     }, []);
 
     const changeLightStatus = async (feedId, newStatus) => {
-        const newData = newStatus ? "ON" : "OFF"
+        const newData = newStatus ? props.onValue : props.offValue
         setDeviceState(newStatus)
         await axios.post(`${API_URL}/cambien/${feedId}/${newData}`)
 
@@ -94,13 +93,13 @@ const OnOffDevice = (props) => {
                             {props.icon}
                         </Grid>
                         <Grid item xs={9}>
-                            <Typography gutterBottom variant="h5" component="div" style={{ color: "white", fontSize: props.fontSize ? props.fontSize : "23px", marginLeft: "15px" }}>
+                            <Typography gutterBottom variant="h5" component="div" style={{ color: "#4a148c", fontSize: props.fontSize ? props.fontSize : "23px", marginLeft: "15px", fontWeight:"bold" }}>
                                 {props.deviceName}
                             </Typography>
                             <Stack direction="row" spacing={1} alignItems="center" style={{marginTop:25, marginLeft:20}}>
-                                <Typography style={{ color: "white" }}>OFF</Typography>
+                                <Typography style={{ color: "#212121", fontWeight:"bold"}}>OFF</Typography>
                                 <AntSwitch checked={deviceState} inputProps={{ 'aria-label': 'ant design' }} onChange={(e, checked) => changeLightStatus(props.feedId, checked)} />
-                                <Typography style={{ color: "white" }}>ON</Typography>
+                                <Typography style={{ color: "#212121", fontWeight:"bold" }}>ON</Typography>
                             </Stack>
                         </Grid>
                         

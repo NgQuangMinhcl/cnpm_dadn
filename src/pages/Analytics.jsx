@@ -5,7 +5,6 @@ import Navbar from "../components/Navbar";
 import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import BarChart from '../charts/BarChart';
 import HistoryChart from '../charts/HistoryChart';
 import AccordionDash from "../components/AccordionDash";
 import dayjs from 'dayjs';
@@ -18,7 +17,7 @@ import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 
 export default function Analytics() {
     const [value, setValue] = useState(dayjs());
-    // console.log('valueDate: ',value);
+    console.log('valueDate: ',value);
     return (
         <>
             <Navbar />
@@ -32,18 +31,12 @@ export default function Analytics() {
                         <Grid item xs={9} spacing={2}>
                             <Card sx={{ height: 500, backgroundColor: '#ede7f6', marginBottom: '20px' }}>
                                 <CardContent>
-                                    
-                                    <HistoryChart feedId={"nhiet-do"} targetDate={value} nameChart={'Temperature'} />
+                                    <HistoryChart feedId={"cambien1"} targetDate={value} nameChart={'Temperature'} />
                                 </CardContent>
                             </Card>
                             <Card sx={{ height: 500, backgroundColor: '#ede7f6', marginBottom: '20px' }}>
                                 <CardContent>
-                                    <HistoryChart feedId={"do-am"} targetDate={value} nameChart={'Humidity'}/>
-                                </CardContent>
-                            </Card>
-                            <Card sx={{ height: 50 + "vh", backgroundColor: '#ede7f6', marginBottom: '20px' }}>
-                                <CardContent>
-                                    <BarChart />
+                                    <HistoryChart feedId={"cambien2"} targetDate={value} nameChart={'Humidity'}/>
                                 </CardContent>
                             </Card>
                         </Grid>

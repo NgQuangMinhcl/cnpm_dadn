@@ -14,10 +14,10 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import AnalyticsIcon from '@mui/icons-material/Analytics';
 import HomeIcon from '@mui/icons-material/Home';
-import SettingsIcon from '@mui/icons-material/Settings';
 import { useNavigate} from 'react-router-dom';
 import { useAppStore } from '../appStore';
-import DevicesIcon from '@mui/icons-material/Devices';
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
+import SettingsIcon from '@mui/icons-material/Settings';
 
 const drawerWidth = 240;
 
@@ -91,7 +91,7 @@ export default function Sidenav() {
     <Box sx={{ display: 'flex'}}>
       <CssBaseline />
       <Box height={30} />
-      <Drawer variant="permanent" open={open} PaperProps={{sx:{backgroundImage:'linear-gradient(#512da8, #673ab7, #b39ddb)', color: 'white'}}}>
+      <Drawer variant="permanent" open={open} PaperProps={{sx:{backgroundColor:"black", color: 'white'}}}>
         <DrawerHeader>
           <IconButton>
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
@@ -99,7 +99,7 @@ export default function Sidenav() {
         </DrawerHeader>
         <Divider />
         <List>
-            <StyledListItem disablePadding sx={{ display: 'block' }} onClick={()=>(navigate("/"))}>
+            <StyledListItem disablePadding sx={{ display: 'block' }} onClick={()=>(navigate("/home"))}>
                 <ListItemButton
                   sx={{
                     minHeight: 48,
@@ -120,28 +120,6 @@ export default function Sidenav() {
                   <ListItemText primary="Home" sx={{ opacity: open ? 1 : 0 }} />
                 </ListItemButton>
             </StyledListItem>
-            {/* <StyledListItem disablePadding sx={{ display: 'block' }} onClick={()=>(navigate("/devices"))}> 
-                <ListItemButton
-                sx={{
-                    minHeight: 48,
-                    justifyContent: open ? 'initial' : 'center',
-                    px: 2.5,
-                    
-                }}
-                >
-                <ListItemIcon
-                    sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : 'auto',
-                    justifyContent: 'center',
-                    color:'white',
-                    }}
-                >
-                    <DevicesIcon/>
-                </ListItemIcon>
-                <ListItemText primary="Devices" sx={{ opacity: open ? 1 : 0 }} />
-                </ListItemButton>
-            </StyledListItem>   */}
             <StyledListItem disablePadding sx={{ display: 'block' }} onClick={()=>(navigate("/analytics"))}> 
                 <ListItemButton
                 sx={{
@@ -164,7 +142,50 @@ export default function Sidenav() {
                 <ListItemText primary="Analytics" sx={{ opacity: open ? 1 : 0 }} />
                 </ListItemButton>
             </StyledListItem>  
-            <StyledListItem disablePadding sx={{ display: 'block' }} onClick={()=>(navigate("/settings"))}> 
+
+            {/* <StyledListItem disablePadding sx={{ display: 'block' }} onClick={()=>(navigate("/profile"))}> 
+                <ListItemButton
+                sx={{
+                    minHeight: 48,
+                    justifyContent: open ? 'initial' : 'center',
+                    px: 2.5,
+                }}
+                >
+                <ListItemIcon
+                    sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : 'auto',
+                    justifyContent: 'center',
+                    color:'white',
+                    }}
+                >
+                    <ManageAccountsIcon/>
+                </ListItemIcon>
+                <ListItemText primary="Profile" sx={{ opacity: open ? 1 : 0 }} />
+                </ListItemButton>
+            </StyledListItem> */}
+            <StyledListItem disablePadding sx={{ display: 'block' }} onClick={()=>(navigate("/historyLogin"))}> 
+                <ListItemButton
+                sx={{
+                    minHeight: 48,
+                    justifyContent: open ? 'initial' : 'center',
+                    px: 2.5,
+                }}
+                >
+                <ListItemIcon
+                    sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : 'auto',
+                    justifyContent: 'center',
+                    color:'white',
+                    }}
+                >
+                    <ManageAccountsIcon/>
+                </ListItemIcon>
+                <ListItemText primary="User Management" sx={{ opacity: open ? 1 : 0 }} />
+                </ListItemButton>
+            </StyledListItem>
+            <StyledListItem disablePadding sx={{ display: 'block' }} onClick={()=>(navigate("/setting"))}> 
                 <ListItemButton
                 sx={{
                     minHeight: 48,
@@ -182,7 +203,7 @@ export default function Sidenav() {
                 >
                     <SettingsIcon/>
                 </ListItemIcon>
-                <ListItemText primary="Settings" sx={{ opacity: open ? 1 : 0 }} />
+                <ListItemText primary="Setting" sx={{ opacity: open ? 1 : 0 }} />
                 </ListItemButton>
             </StyledListItem>
         </List>
